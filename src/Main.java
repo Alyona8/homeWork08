@@ -18,16 +18,9 @@ public class Main {
     //Задание 2
     public static void selectAndPrintAppVersion(int opSys, int device) {
         int currentYear = LocalDate.now().getYear();
-        if (device < currentYear) {
-            System.out.print("Установите облегченную версию приложения для ");
-        } else {
-            System.out.print("Установите версию приложения для ");
-        }
-        if (opSys == 1) {
-            System.out.println("Android по ссылке");
-        } else {
-            System.out.println("iOS по ссылке");
-        }
+        String deviceName = opSys == 1 ? "Android" : "iOS";
+        String version = device < currentYear ? "облегченную" : "";
+        System.out.printf("Установите %s версию приложения для %s", version, deviceName);
     }
 
     public static void task2() {
@@ -37,14 +30,14 @@ public class Main {
     }
 
     //Задание 3
-    public static int calculateDeliveryDays(int Distance) {
+    public static int calculateDeliveryDays(int distance) {
         int deliveryDays = 0;
         int interval = 40;
         int startInterval = 20;
-        if (Distance <= startInterval) {
+        if (distance <= startInterval) {
             deliveryDays = 1;
         } else {
-            deliveryDays = deliveryDays + (int) Math.ceil((Distance - startInterval) / (double) interval);
+            deliveryDays = deliveryDays + (int) Math.ceil((distance - startInterval) / (double) interval);
         }
         return deliveryDays;
     }
@@ -57,6 +50,7 @@ public class Main {
     public static void main(String[] args) {
         task1();
         task2();
+        System.out.println();
         task3();
     }
 }
